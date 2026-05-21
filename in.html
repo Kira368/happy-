@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0">
+  <title>Папа, с днём рождения | Ты лучший в мире</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(ellipse at 25% 30%, #1c192b, #0b0a14);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      padding: 1.8rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Звёздный фон */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 240, 180, 0.9);
+      animation: twinkle 5s infinite alternate;
+      opacity: 0.6;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.25; transform: scale(0.8); }
+      100% { opacity: 0.95; transform: scale(1.4); }
+    }
+
+    /* Основная карточка */
+    .card {
+      position: relative;
+      z-index: 10;
+      max-width: 720px;
+      width: 100%;
+      background: rgba(16, 14, 26, 0.6);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 3.8rem;
+      padding: 2.8rem 2.5rem 2.6rem;
+      box-shadow: 0 50px 90px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(210, 170, 90, 0.35), inset 0 0 55px rgba(210, 150, 40, 0.12);
+      text-align: center;
+      color: #efe8d8;
+      border: 1px solid rgba(200, 155, 60, 0.4);
+      animation: floatCard 7s infinite ease-in-out;
+    }
+
+    @keyframes floatCard {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-9px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* Декоративная линия вместо иконок */
+    .ornament-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      color: #dbb45c;
+      font-size: 1.6rem;
+      letter-spacing: 6px;
+      font-weight: 300;
+    }
+
+    .ornament-top .line {
+      height: 1px;
+      width: 70px;
+      background: linear-gradient(to right, transparent, #dbb45c, transparent);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(3.2rem, 9vw, 5rem);
+      background: linear-gradient(180deg, #f9eac1 10%, #c28b3c 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0.3rem 0 0.4rem;
+      letter-spacing: 3px;
+      line-height: 1.1;
+      text-shadow: 0 0 30px rgba(200, 130, 20, 0.5);
+    }
+
+    .subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #c9a961;
+      margin-bottom: 2rem;
+      word-spacing: 6px;
+      border-bottom: 1px solid rgba(200, 155, 70, 0.4);
+      display: inline-block;
+      padding-bottom: 0.7rem;
+    }
+
+    /* Главный блок про папу */
+    .dad-section {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 2.8rem;
+      padding: 2rem 1.4rem;
+      margin: 1.4rem 0 2rem;
+      border: 1px solid rgba(210, 165, 80, 0.5);
+      font-size: 1.25rem;
+      line-height: 1.9;
+      color: #ede3ce;
+    }
+
+    .crown-text {
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: #dbb45c;
+      letter-spacing: 8px;
+    }
+
+    .best-dad {
+      font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #f7dc8c, #c8872e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0.6rem 0 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    .gold-word {
+      font-weight: 600;
+      color: #e2b660;
+      background: rgba(200, 130, 30, 0.12);
+      padding: 0.1rem 0.6rem;
+      border-radius: 0.5rem;
+    }
+
+    /* Блок с качествами папы */
+    .qualities {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+      margin: 2rem 0 1.5rem;
+    }
+
+    .quality-badge {
+      background: rgba(30, 25, 40, 0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(200, 155, 60, 0.55);
+      border-radius: 2.5rem;
+      padding: 0.7rem 1.6rem;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #e0c78a;
+      transition: 0.3s;
+    }
+
+    .quality-badge:hover {
+      background: rgba(200, 140, 30, 0.15);
+      border-color: #dba745;
+    }
+
+    /* Блок с датами и цифрами (метафорично) */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 2rem 0 1.5rem;
+      flex-wrap: wrap;
+      color: #c9af7c;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #e6c26e;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 0.3rem;
+      color: #b39762;
+    }
+
+    /* Линия со свечами (без эмодзи) */
+    .candle-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin: 1.8rem 0 1.2rem;
+    }
+
+    .candle {
+      width: 8px;
+      height: 34px;
+      background: linear-gradient(to bottom, #fbe6b0, #d48c3c);
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      box-shadow: 0 0 15px #ffb347;
+    }
+
+    .candle::after {
+      content: "";
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 16px;
+      background: radial-gradient(circle, #ffdd88, #f0952c);
+      border-radius: 50% 50% 20% 20%;
+      animation: flicker 0.2s infinite alternate;
+      box-shadow: 0 0 18px #ffaa00;
+    }
+
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+      100% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+    }
+
+    .cake-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #dcb570;
+      font-style: italic;
+    }
+
+    /* Кнопка */
+    .btn-wish {
+      background: rgba(18, 15, 28, 0.55);
+      backdrop-filter: blur(14px);
+      border: 1.8px solid #cf9f4a;
+      color: #f5e3bf;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 1.25rem;
+      padding: 1rem 2.8rem;
+      border-radius: 3.5rem;
+      cursor: pointer;
+      transition: 0.4s;
+      letter-spacing: 3px;
+      margin: 1.8rem 0 1rem;
+      box-shadow: 0 0 35px rgba(200, 130, 20, 0.5);
+    }
+
+    .btn-wish:hover {
+      background: rgba(200, 120, 20, 0.25);
+      border-color: #e5b864;
+      box-shadow: 0 0 60px #d4942c;
+      transform: scale(1.04);
+      color: #ffffff;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #b1996c;
+      border-top: 1px dashed rgba(210, 160, 70, 0.45);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      letter-spacing: 1.5px;
+    }
+
+    /* Конфетти */
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 12px;
+      height: 20px;
+      background: gold;
+      top: -40px;
+      border-radius: 5px;
+      animation: drop linear forwards;
+    }
+
+    @keyframes drop {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(800deg); opacity: 0; }
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 2rem 1.4rem;
+      }
+      .stats-row {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars" id="starsContainer"></div>
+
+  <div class="card">
+    <!-- Декоративный верх -->
+    <div class="ornament-top">
+      <span class="line"></span>
+      <span>• • •</span>
+      <span class="line"></span>
+    </div>
+
+    <h1>С днём рождения</h1>
+    <div class="subtitle">дорогой папа</div>
+
+    <!-- Главный блок: папа самый лучший -->
+    <div class="dad-section">
+      <div class="crown-text">◆ ◇ ◆</div>
+      <div class="best-dad">Ты — самый лучший папа в мире</div>
+      <p style="margin-top: 1rem;">
+        Спасибо за твою <span class="gold-word">мудрость</span>,
+        <span class="gold-word">доброту</span> и бесконечную поддержку.
+        Ты делаешь нашу жизнь <span class="gold-word">наполненной смыслом</span>,
+        а каждый день — <span class="gold-word">особенным</span>.
+      </p>
+    </div>
+
+    <!-- Качества папы (заполняем пространство) -->
+    <div class="qualities">
+      <div class="quality-badge">Забота</div>
+      <div class="quality-badge">Сила</div>
+      <div class="quality-badge">Честность</div>
+      <div class="quality-badge">Юмор</div>
+      <div class="quality-badge">Терпение</div>
+      <div class="quality-badge">Вдохновение</div>
+    </div>
+
+    <!-- Метафорическая статистика -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">рядом в сердце</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">гордость</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">благодарность</div>
+      </div>
+    </div>
+
+    <!-- Свечи без эмодзи -->
+    <div class="candle-row">
+      <div class="candle"></div>
+      <span class="cake-text">Торт</span>
+      <div class="candle"></div>
+      <div class="candle"></div>
+    </div>
+
+    <button class="btn-wish" id="magicButton">
+      Загадать желание
+    </button>
+
+    <div class="footer-note">
+      <span>навсегда пример</span>
+      <span>•</span>
+      <span>твой день</span>
+      <span>•</span>
+      <span>опора семьи</span>
+    </div>
+  </div>
+
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <script>
+    (function() {
+      // Звёздный фон
+      const starsBox = document.getElementById('starsContainer');
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 4 + 1.6;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.animationDelay = `${Math.random() * 6}s`;
+        star.style.animationDuration = `${3 + Math.random() * 7}s`;
+        starsBox.appendChild(star);
+      }
+
+      // Конфетти
+      function celebrate() {
+        const container = document.getElementById('confettiContainer');
+        container.innerHTML = '';
+        const colors = [
+          '#E6C27A', '#D4A24E', '#C4944C', '#B8863C', '#DAB46E',
+          '#F5DEB3', '#CFA055', '#E2B96F', '#C79A4B', '#EAD2A3'
+        ];
+        for (let i = 0; i < 110; i++) {
+          const piece = document.createElement('div');
+          piece.className = 'confetti-piece';
+          piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.left = `${Math.random() * 100}%`;
+          piece.style.animationDelay = `${Math.random() * 2.5}s`;
+          piece.style.animationDuration = `${2.6 + Math.random() * 5}s`;
+          const w = 9 + Math.random() * 18;
+          piece.style.width = `${w}px`;
+          piece.style.height = `${12 + Math.random() * 22}px`;
+          piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+          container.appendChild(piece);
+        }
+        setTimeout(() => { container.innerHTML = ''; }, 8000);
+      }
+
+      const btn = document.getElementById('magicButton');
+      btn.addEventListener('click', function() {
+        celebrate();
+        const orig = btn.textContent;
+        btn.textContent = 'Желание загадано!';
+        btn.style.background = 'rgba(210, 130, 30, 0.25)';
+        const card = document.querySelector('.card');
+        card.style.boxShadow = '0 0 90px rgba(220, 160, 40, 1), 0 50px 90px black';
+        setTimeout(() => {
+          card.style.boxShadow = '0 50px 90px rgba(0,0,0,0.7), 0 0 0 1px rgba(210,170,90,0.35), inset 0 0 55px rgba(210,150,40,0.12)';
+        }, 500);
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.style.background = 'rgba(18,15,28,0.55)';
+        }, 2800);
+      });
+    })();
+  </script>
+</body>
+</html>
